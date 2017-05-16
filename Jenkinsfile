@@ -21,5 +21,11 @@ pipeline {
         junit 'target/surefire-reports/*.xml'
       }
     }
+    stage('Skip UTs') {
+      steps {
+        bat 'mvn verify -DskipUTs'
+        junit 'target/failsafe-reports/*.xml'
+      }
+    }
   }
 }
